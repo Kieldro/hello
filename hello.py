@@ -51,4 +51,5 @@ map(lambda x: x * x, [1,2,3])
 filter(lambda x: x > 3, [1,2,3,4,5,4,3,2,1])
 
 print [x+1 for x in nums if x % 2 == 1]		# list comprehension
+#return None		# null in c++
 
