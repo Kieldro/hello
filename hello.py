@@ -1,5 +1,8 @@
 """
 hello python
+
+examples of python features
+
 no curly braces for function bodies
 no semicolons
 no datatypes
@@ -9,19 +12,19 @@ implicit main
 #import otherPy
 
 # Main Function
-if __name__ == '__main__':        
-    2
-    4
-    
+if __name__ == '__main__':		# doesn't not execute when imported
+	2
+	4
 	x = 4	# variable declarations don't need data types
-	s = 'a string ' + 'concat ' + "\ndouble and single quotes are interchangable"
+	
+	s = 'concat ' + "\ndouble and single quotes are interchangable" + str(2)
 	print s
-	2 + 2
 	print len('hello there')
-	print len(s)
-	# concat lists as well as strings
+	
+	# lists
+	print '\npython lists:'
 	g = ['delta', 'epsilon', 'zeta']
-	greek = ['alpha', 'beta', 'gamma'] + g
+	greek = ['alpha', 'beta', 'gamma'] + g	# concat lists as well as strings
 	greek.pop()
 	greek.append('eta')
 	listlist = [greek, g, [1, 2, 3] ]	# list of lists
@@ -32,8 +35,14 @@ if __name__ == '__main__':
 	print greek[1:]
 
 	# tuples are like immutable lists
+	print '\ntuples:'
 	x, y = (3, 5)		# new x and y vars are assigned values
-	assert x == 3 and y == 5		# no parenthesis
+	x, y = y, x		# swap
+	assert True and y == y		# no parenthesis
+	assert not False, 'assert message '	+ str(x)	# no parenthesis
+	print type ([])
+	assert type([]) is list
+	assert type({}) is dict		
 	s1 = set(greek)
 	print s1
 	s1.add('alpha')
@@ -52,7 +61,8 @@ if __name__ == '__main__':
 	d.values()
 	d.items()		# a list with each element as a tuple
 	del d['bar']		# deletes element
-
+	
+	nums = range(10)
 	print [x+1 for x in nums if x % 2 == 1]		# list comprehension
 	#return None		# null in c++
 	map(lambda x: x * x, [1,2,3])
@@ -61,7 +71,7 @@ if __name__ == '__main__':
 	print [x+1 for x in nums if x % 2 == 1]		# list comprehension
 
 	print dir([1,2])
-	print help([1,2])
+	#print help([1,2])
 	
 	# classes
 	class FruitShop:
@@ -92,5 +102,8 @@ if __name__ == '__main__':
 		    return self.fruitPrices[fruit]
 	
 	for index in range(3):
+		2
 	
-# end of main
+	
+	print 'Everything is syntactically correct.'
+	# end of main
