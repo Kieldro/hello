@@ -1,20 +1,30 @@
 /*
 Ian Buitrago
 C++
-11-18-2011
+created: 11-18-2011
+
+run with:
+g++ hello.cc
+./hello
+or:
+g++ hello.cc -o hello.o;if [ $? -eq 0 ];then ./hello.o;fi
+
+
+standard extensions: .cc .cpp .c++ .h
 */
 
 // preprocessor directive
 #include <iostream>		// for cout/cin
-#include <assert.h>		// for assert fuction
+#include <cassert>		// for assert fuction
 #include <string>
+#include <vector>
 
 //macros
 #define PI 3.14159	// consumes less memory
 const int C = 2;	// typed constant
 
-
 using namespace std;
+using std::cout;		// alternatively
 
 // prototypes
 char bar(void);		// no params
@@ -27,8 +37,11 @@ struct product {		// equivalent to class except members are public by default
   int weight;
   float price;
   
-  product(short){weight = x;};
+  // constructors
   product(){;};		// now has to be specified
+  product(short){weight = x;};
+
+  // methods
   void w(){++weight;}
   
   private:
@@ -80,7 +93,7 @@ int main (){
 			assert (sizeof(char) == 1); // bytes
 			sizeof 1;	// no paren needed
 			
-			assert (sizeof(int) == sizeof(long));	// in most systems
+			assert (sizeof(int) == .5*sizeof(long) );	// in most systems
 		}
 	
 	
@@ -91,7 +104,7 @@ int main (){
 		== 017       // octal
 		&& 15 == 0xF);       // hexadecimal 
 	
-	assert(5e-2 == .05);
+	assert(5e-2 == .05);		// sdientific notation
 	
 	assert ('\71' != char(71) );	// escaping ascii codes are only in octa or hex
 	assert ("a" "b""c" == "abc");	// concantenate strings
@@ -101,7 +114,7 @@ int main (){
 	assert(PI == 3.14159);
 	
 	short c;
-	short a = 2 + (c = 3 + 3) + 5;		// = returns rvalue
+	short a = 2 + (c = 3 + 3) + 5;		// = returns lvalue
 	
 	assert( !(1 ^ 1 || 0 ^ 0) );		// xor operator
 	assert(!-4 == 0 && ~-4 == 3);		// bit wise not
@@ -126,28 +139,38 @@ int main (){
 	
 	int numbers[5];
 	int * p;
-	p = numbers;  *p = 10;
-	p++;  *p = 20;
-	p = &numbers[2];  *p = 30;	// offset operator
-	p = numbers + 3;  *p = 40;
-	p = numbers;  *(p+4) = 50;
+	p = numbers;	*p = 10;
+	p++;			*p = 20;
+	p = &numbers[2];*p = 30;	// offset operator
+	p = numbers + 3;*p = 40;
+	p = numbers;	*(p+4) = 50;
+	
+	// references
+	int z = 2;
+	int& r = z;
+	assert(++r == 3);
 	
 	int (*minus)(int,int) = subtraction;		// pointer to function
 	a = (*minus)(2, -3);
 	
 	foo(5, a);
 	Obj2.A(1);
-	
+/*
+	typedef vec vector<int>;
+	vec v(3);
+	cout << v[0] << endl;
+*/	
 	return 0;
 }
 
+// functions
 int subtraction (int a, int b)
 { return (a-b); }
 
 void foo(unsigned int x = 2, short a){// default value cannot be specified in both prototype and definition
 	cout << "foo: " << (1+0 == 1 ? 2 : 5+1) << endl;
 	
-	return;
+
 }
 
 char bar(void){
