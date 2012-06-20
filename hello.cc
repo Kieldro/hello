@@ -59,8 +59,9 @@ class ClassType{	// by default members are private
 			int a;
 			void A (short){
 				int i = 2;
-				cout << "this->i: " << this->i << endl;};
-			int B(short x){return b;};
+				cout << "this->i: " << this->i << endl;
+			}
+			int B(short x){return b;}
 		
 		private:
 			int b;
@@ -155,11 +156,11 @@ int main (){
 	
 	foo(5, a);
 	Obj2.A(1);
-/*
-	typedef vec vector<int>;
+
+	typedef vector<int> vec;
 	vec v(3);
-	cout << v[0] << endl;
-*/	
+	cout << "vec[0] " << v[0] << endl;
+	
 	return 0;
 }
 
@@ -169,8 +170,6 @@ int subtraction (int a, int b)
 
 void foo(unsigned int x = 2, short a){// default value cannot be specified in both prototype and definition
 	cout << "foo: " << (1+0 == 1 ? 2 : 5+1) << endl;
-	
-
 }
 
 char bar(void){
