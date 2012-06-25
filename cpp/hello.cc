@@ -11,9 +11,12 @@ g++ hello.cc -o hello.o;if [ $? -eq 0 ];then ./hello.o;fi
 
 
 standard extensions: .cc .cpp .c++ .h
+
+questions:
+* automatic objects vs static objects?
 */
 
-// preprocessor directive
+// preprocessor directive - space required after include
 #include <iostream>		// for cout/cin
 #include <cassert>		// for assert fuction
 #include <string>
@@ -22,8 +25,9 @@ standard extensions: .cc .cpp .c++ .h
 //macros
 #define PI 3.14159	// consumes less memory
 const int C = 2;	// typed constant
+int constant  = 4;
 
-using namespace std;
+using namespace std;		// generally in poor taste
 using std::cout;		// alternatively
 
 // prototypes
@@ -72,7 +76,12 @@ ClassType::ClassType(){i = 0;}
 
 int main (){
 	cout << "Hello World!" << endl;		// endl flushes the buffer
+	//cout << "C++ version: " << (long)__cplusplus << endl;
 	
+	int constant = 8;
+	// explicit refernce to global variable
+	assert(::constant == 4);
+
 	//assert only fails at 0
 	assert (!(true and false)); // 'and' is a key word for &&
 	assert (2);		// assert fails only if 0
