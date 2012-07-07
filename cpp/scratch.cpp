@@ -7,7 +7,7 @@ g++ scratch.cpp;if [ $? -eq 0 ];then ./a.out;fi
 #include <vector>
 using namespace std;
 int main (){
-
+	std::cout << "int(): " << int() << std::endl;
 
 /*
 	string s = "oioijoij";
