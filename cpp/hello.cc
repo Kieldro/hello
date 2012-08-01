@@ -7,7 +7,8 @@ run with:
 g++ hello.cc
 ./hello
 or:
-g++ hello.cc -o hello.o;if [ $? -eq 0 ];then ./hello.o;fi
+source=hello.cc; \
+g++ hello.cc;if [ $? -eq 0 ];then ./a.out;fi
 
 
 standard extensions: .cc .cpp .c++ .h

@@ -1,9 +1,16 @@
+/*
+g++ scratch.cpp;if [ $? -eq 0 ];then ./a.out;fi
+*/
+
 #include <iostream>
 #include <cstdio>
 #include <vector>
 #include <deque>
 using namespace std;
 int main (){
+	std::cout << "int(): " << int() << std::endl;
+
+/*
 	string s = "oioijoij";
 	vector<int> v;		// c++11
 //	int w [5] = {1, 4, 6, 5};
