@@ -1,10 +1,14 @@
-source=$*
+#!bin/sh
+
+#source=$*
+source=oddnums.cpp
 #len=${#source}
-object=$source.o
+object=oddnums.o
 
 clear
 echo COMPILTING $source
-g++ --std=c++0x $source -o $object
+# compile in c++11
+g++ --std=c++0x -Wall -pedantic $source -o $object
 
 if [ $? -eq 0 ];then		# no compilation errors
 	echo RUNNING $source
