@@ -9,6 +9,7 @@ g++ hello.cc
 or:
 source=hello.cc; \
 g++ hello.cc;if [ $? -eq 0 ];then ./a.out;fi
+or use a Makefile
 
 
 standard extensions: .cc .cpp .c++ .h
@@ -24,9 +25,16 @@ questions:
 #include <vector>
 
 //macros
-#define PI 3.14159	// consumes less memory
+#define PI 3.14159	// consumes less memory, object-like macro
+#define NUMBERS 1, \
+				2, \
+				3
+#define min(X, Y)  ((X) < (Y) ? (X) : (Y))			// function-like macro
+#define eprintf(...) fprintf (stderr, __VA_ARGS__)		// variadic macro
+
 const int C = 2;	// typed constant
 int constant  = 4;
+wchar_t c = '°';
 
 using namespace std;		// generally in poor taste
 using std::cout;		// alternatively
@@ -79,6 +87,7 @@ int main (){
 	cout << "Hello World!" << endl;		// endl flushes the buffer
 	//cout << "C++ version: " << (long)__cplusplus << endl;
 	
+	min(1, 2);
 	int constant = 8;
 	// explicit refernce to global variable
 	assert(::constant == 4);
@@ -151,7 +160,7 @@ int main (){
 	int numbers[5];
 	int * p;
 	p = numbers;	*p = 10;
-	p++;			*p = 20;
+	++p;			*p = 20;
 	p = &numbers[2];*p = 30;	// offset operator
 	p = numbers + 3;*p = 40;
 	p = numbers;	*(p+4) = 50;

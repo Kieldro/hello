@@ -1,9 +1,9 @@
 #!bin/sh
 
 #source=$*
-source=oddnums.cpp
+source=scratch.cpp
 #len=${#source}
-object=oddnums.o
+object=scratch.o
 
 clear
 echo COMPILTING $source
