@@ -26,21 +26,32 @@ class Board{
 		// constructor
 		Board(){
 			for(int i = 7; i >= 0; --i){
-				if(i == 0 or i == 7){
+				if(i == 0){		// white
 					_b[i][0]  = "♖";
 					_b[i][1]  = "♘";
 					_b[i][2]  = "♗";
-					_b[i][3]  = "\u2655";
+					_b[i][3]  = "♕";
 					_b[i][4]  = "♔";
 					_b[i][5]  = "♗";
 					_b[i][6]  = "♘";
 					_b[i][7]  = "♖";
-					continue;
-				}for(int j = 0; j < 8; ++j)
-					if(i != 1 and i != 6)
-						_b[i][j] = '-';		// empty space
-					else
-						_b[i][j] = "♙";
+				}else if(i == 7){		// black
+					_b[i][0]  = "♜";
+					_b[i][1]  = "♞";
+					_b[i][2]  = "♝";
+					_b[i][3]  = "♛";
+					_b[i][4]  = "♚";
+					_b[i][5]  = "♝";
+					_b[i][6]  = "♞";
+					_b[i][7]  = "♜";
+				}else
+					for(int j = 0; j < 8; ++j)
+						if(i == 1)
+							_b[i][j] = "♙";
+						else if (i == 6)
+							_b[i][j] = "♟";		// black
+						else
+							_b[i][j] = '-';		// empty space
 			}
 		}
 		
