@@ -24,6 +24,7 @@ if __name__ == '__main__':		# doesn't not execute when imported
 	# lists
 	print '\npython lists:'
 	g = ['delta', 'epsilon', 'zeta']
+	h = [0]*5
 	greek = ['alpha', 'beta', 'gamma'] + g	# concat lists as well as strings
 	greek.pop()
 	greek.append('eta')
@@ -93,8 +94,8 @@ if __name__ == '__main__':		# doesn't not execute when imported
 		def getCostPerPound(self, fruit):
 		    """
 		        fruit: Fruit string
-		    Returns cost of 'fruit', assuming 'fruit'
-		    is in our inventory or None otherwise
+		    	Returns cost of 'fruit', assuming 'fruit'
+				is in our inventory or None otherwise
 		    """
 		    if fruit not in self.fruitPrices:
 		        print "Sorry we don't have %s" % (fruit)
