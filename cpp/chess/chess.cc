@@ -2,12 +2,15 @@
 #include <string>
 #include <vector>
 #include <cassert>
+#include <regex>
+// #include <boost/regex.hpp>
 
 using namespace std;
 
 // ------
 // macros
 #define DEBUG true
+#define CERR(s) if(DEBUG) cerr << s << endl;else;
 #define BOOYAKASHA	if(DEBUG) cerr << "BOOYAKASHA!" <<  endl; else;
 
 // prototypes
@@ -41,8 +44,8 @@ class Board{
 					_b[i][2]  = "♝";
 					_b[i][3]  = "♛";
 					_b[i][4]  = "♚";
-					_b[i][5]  = "♝";
-					_b[i][6]  = "♞";
+					_b[i][5]  = "♝"
+	;				_b[i][6]  = "♞";
 					_b[i][7]  = "♜";
 				}else
 					for(int j = 0; j < 8; ++j)
@@ -51,7 +54,7 @@ class Board{
 						else if (i == 6)
 							_b[i][j] = "♟";		// black
 						else
-							_b[i][j] = '-';		// empty space
+							_b[i][j] = "-";		// empty space
 			}
 		}
 		
@@ -68,12 +71,29 @@ class Board{
 			}
 			printFile();
 		}
+		
+		void move(){
+			string move;
+			cout << "Enter move: ";
+			cin >> move;
+			CERR("move: " + move);
+			regex rx0("[as]");
+			// CERR(regex_match(move, rx0))
+			// regex rx1 ("a3");
+			
+			// CERR("flags: " << regexObj.flags());
+			//");
+			// /[RNBQK]?([a-h]?[x:])?[a-h][1-8]/
+			// TODO: en passant
+			
+		}
 };
 
 int main(){
 	Board b;
 	
 	b.printBoard();
+	b.move();
 	
 	return 0;
 }

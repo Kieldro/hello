@@ -1,7 +1,8 @@
 SHELL = /bin/sh
 
-CC = g++-4.7
-CPPFLAGS = -std=c++0x #-pedantic -Wall
+CC = g++#-4.7
+CPPFLAGS = -std=c++0x -I /public/linux/include/boost-1_44 \
+	-L/public/linux/include/ -l #-pedantic -Wall
 
 RUN = chess.cc
 
@@ -10,7 +11,7 @@ all: run clean
 run: 
 	clear
 	$(CC) $(CPPFLAGS) $(RUN) -o chess.app
-	./chess.app
+	./chess.app < inChess.in
 
 test: $(TEST)
 	clear
