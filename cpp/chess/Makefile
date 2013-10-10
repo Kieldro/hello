@@ -1,8 +1,7 @@
 SHELL = /bin/sh
 
 CC = g++#-4.7
-CPPFLAGS = -std=c++0x -I /public/linux/include/boost-1_44 \
-	-L/public/linux/include/ -l #-pedantic -Wall
+CPPFLAGS = -std=c++0x #-I /public/linux/include/boost-1_44 -L/public/linux/include/ -l #-pedantic -Wall
 
 RUN = chess.cc
 
