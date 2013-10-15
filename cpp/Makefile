@@ -5,7 +5,7 @@ FLAGS = -std=c++0x -w	# suppresses warnings
 all: $(SOURCE)
 	@#@clear		# '@' suppresses command echoing
 	$(CC) $(FLAGS) $(SOURCE)
-	@./a.out
+	./a.out arg1
 
 $(SOURCE): 
 	echo I RAN

@@ -12,7 +12,7 @@ g++ hello.cc;if [ $? -eq 0 ];then ./a.out;fi
 or use a Makefile
 
 
-standard extensions: .cc .cpp .c++ .h
+standard file extensions: .cc .cpp .c++ .h
 
 questions:
 * automatic objects vs static objects?
@@ -23,7 +23,7 @@ questions:
 #include <cassert>		// for assert fuction
 #include <string>
 #include <vector>
-
+#include <stdio.h>		// for printf
 //macros
 #define PI 3.14159	// consumes less memory, object-like macro
 #define NUMBERS 1, \
@@ -40,10 +40,14 @@ using namespace std;		// generally in poor taste
 using std::cout;		// alternatively
 
 // prototypes
+int subtraction (int a, int b);
+// metasyntactic functions
+void foo(unsigned, short b = 4); 	// default values
 char bar(void);		// no params
 void bar(char = 71);	//overloaded function
-void foo(unsigned, short b = 4); 	// default values
-int subtraction (int a, int b);
+void baz(void (*)(char));
+void qux();		// no params
+// void wibble();
 
 // data structures
 struct product {		// equivalent to class except members are public by default
@@ -83,9 +87,12 @@ class ClassType{	// by default members are private
 
 ClassType::ClassType(){i = 0;}
 
-int main (){
+int main (int argc, char **argv){		// must return int
 	cout << "Hello World!" << endl;		// endl flushes the buffer
-	//cout << "C++ version: " << (long)__cplusplus << endl;
+	cout << "C++ version: " << (long)__cplusplus << endl;
+	cout << "arguement count: " << argc << endl;
+	for(int i = 0; i < argc; ++i)
+		cout << "arguement value: " << argv[i] << endl;
 	
 	min(1, 2);
 	int constant = 8;
@@ -113,7 +120,7 @@ int main (){
 			assert (sizeof(char) == 1); // bytes
 			sizeof 1;	// no paren needed
 			
-			assert (sizeof(int) == .5*sizeof(long) );	// in most systems
+			// assert (sizeof(int) == .5*sizeof(long) );	// in most systems
 		}
 	
 	
@@ -179,6 +186,8 @@ int main (){
 	typedef vector<int> vec;
 	vec v(3);
 	cout << "vec[0] " << v[0] << endl;
+
+	baz(bar);
 	
 	return 0;
 }
@@ -192,10 +201,21 @@ void foo(unsigned int x = 2, short a){// default value cannot be specified in bo
 }
 
 char bar(void){
+	cout << "bar(" << "void" << ")" << endl;
 
 	return 0;
 }
 
 void bar(char c){
-	;
+	// cout << "bar(" << c << ")" << endl;
+	printf("bar(%c)\n", c);
 }
+
+// first class function/ higher order
+void baz(void (*f)(char)){
+	f('Z');
+	// (*f)('Z');		// also valid
+}
+
+void qux(){cout << "qux()" << endl;}
+void wibble(void){}
